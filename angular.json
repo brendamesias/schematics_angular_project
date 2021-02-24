@@ -1,9 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "b9997608-cb55-424a-86a5-74aed05e5801"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "lint-staged": {
+    "lint-staged-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/lint-staged",
+            "outputPath": "dist/lint-staged-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,18 +71,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "lint-staged:build"
+            "browserTarget": "lint-staged-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "lint-staged:build:production"
+              "browserTarget": "lint-staged-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "lint-staged:build"
+            "browserTarget": "lint-staged-app:build"
           }
         },
         "test": {
@@ -99,9 +102,10 @@
             "scripts": []
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+       "lint": {
+          "builder": "@angular-eslint/builder:lint",
           "options": {
+            "eslintConfig": ".eslintrc.js",
             "tsConfig": [
               "tsconfig.app.json",
               "tsconfig.spec.json",
@@ -116,16 +120,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "lint-staged:serve"
+            "devServerTarget": "lint-staged-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "lint-staged:serve:production"
+              "devServerTarget": "lint-staged-app:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "lint-staged"
+  "defaultProject": "lint-staged-app"
 }
