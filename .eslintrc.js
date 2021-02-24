@@ -40,6 +40,7 @@ module.exports = {
          'import/prefer-default-export': 'off',
          'class-methods-use-this': 'off',
          'lines-between-class-members': 'off',
+         '@typescript-eslint/camelcase': 'off',
          "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
          '@typescript-eslint/unbound-method': [
            'error',
